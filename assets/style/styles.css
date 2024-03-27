@@ -1,0 +1,63 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Quicksand", sans-serif;
+  font-optical-sizing: auto;
+}
+
+main {
+  padding-top: 2rem;
+  min-height: calc(100vh - 3.5rem);
+  background-color: #eaeaea;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.inner-container {
+  max-width: 1400px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-grow: 1;
+  align-content: start;
+  justify-content: center;
+}
+
+/* .note-item {
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  padding: 0.75rem;
+}
+.note-item-header {
+  display: flex;
+  justify-content: space-between;
+} */
+
+/* #notes-list-container .note-title {
+  font-size: large;
+  font-weight: 700;
+}
+#notes-list-container .modified-date {
+  font-size: small;
+  color: rgba(0, 0, 0, 0.7);
+  margin-bottom: 0.5rem;
+} */
+
+/* .note-item .delete-button {
+  padding: 0.25rem;
+  background-color: rgb(221, 37, 37);
+  border: 0;
+  border-radius: 3px;
+  color: white;
+  vertical-align: middle;
+  aspect-ratio: 1;
+}
+.note-item .delete-button:hover {
+  cursor: pointer;
+  background-color: rgb(221, 37, 37, 0.8);
+} */
