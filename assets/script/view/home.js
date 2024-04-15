@@ -24,7 +24,7 @@ const home = () => {
       notesListContainer.append(...notesItemElements);
       notesListContainer.querySelectorAll("note-item").forEach((item) => {
         item.addEventListener("delete-note", (ev) => {
-          const index = notesData.findIndex((note) => note.id !== ev.detail);
+          const index = notesData.findIndex((note) => note.id === ev.detail);
           notesData.splice(index, 1);
           displayResult(notesData);
         });

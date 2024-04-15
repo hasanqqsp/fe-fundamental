@@ -66,12 +66,6 @@ class NotesList extends HTMLElement {
 
   connectedCallback() {
     this.render();
-
-    // this.shadowRoot
-    //   .querySelector("note-item")
-    //   .addEventListener("delete-note", () => {
-    //     console.log("delete");
-    //   });
   }
 
   render() {

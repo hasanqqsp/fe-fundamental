@@ -199,11 +199,23 @@ class AddNoteForm extends HTMLElement {
 
     this._shadowRoot.querySelector("form").addEventListener("submit", (ev) => {
       ev.preventDefault();
+      const bodyElement = this._shadowRoot.getElementById("input-body");
+
       const title = this._shadowRoot.getElementById("input-title").value;
-      const body = this._shadowRoot.getElementById("input-body").value;
+      const body = bodyElement.value;
       this.onFormSubmit({ title, body });
       ev.target.reset();
     });
+
+    this._shadowRoot
+      .getElementById("input-body")
+      .addEventListener("change", (ev) => {
+        if (ev.target.value.trim().length) {
+          ev.target.setCustomValidity("");
+        } else {
+          ev.target.setCustomValidity("Harus diisi dengan benar");
+        }
+      });
   }
 }
 
