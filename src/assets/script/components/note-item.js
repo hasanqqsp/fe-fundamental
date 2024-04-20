@@ -21,6 +21,10 @@ class NoteItem extends HTMLElement {
         display: flex;
         justify-content: space-between;
       }
+      .note-action {
+        display: flex;
+        gap:0.1rem;
+      }
       .note-title {
         font-weight: 700;
         margin-top:0.25rem;
@@ -42,6 +46,7 @@ class NoteItem extends HTMLElement {
         margin-bottom :0;
         white-space: pre;
         text-wrap:balance;
+        word-break: break-word;
       }
     `;
   }
@@ -51,11 +56,15 @@ class NoteItem extends HTMLElement {
 
     this.render();
 
-    this._shadowRoot
-      .querySelector("delete-button")
-      .addEventListener("delete-note", (ev) =>
-        this.dispatchEvent(new ev.constructor(ev.type, { detail: ev.detail }))
-      );
+    this._shadowRoot.querySelectorAll("action-button").forEach((item) => {
+      item.addEventListener("action-note", (ev) => {
+        this.dispatchEvent(
+          new ev.constructor(ev.type, {
+            detail: { id: ev.detail, action: ev.target.attributes.type.value },
+          }),
+        );
+      });
+    });
   }
 
   get note() {
@@ -71,7 +80,7 @@ class NoteItem extends HTMLElement {
     
     ${this._style.outerHTML}
     
-    <article class="note-item">
+    <article class="note-item" data-aos="flip-left">
         <div class="note-item-header">
           <div class="left">
             <h3 class="note-title">${this.note?.title}</h3>
@@ -85,8 +94,14 @@ class NoteItem extends HTMLElement {
             </p>
           </div>
           <div class="note-action">
-            <delete-button id="${this.note?.id}"></delete-button>
-          </div>
+          ${
+            this.note?.archived
+              ? `<action-button type="unarchive" id="${this.note?.id}"></action-button>`
+              : `<action-button type="archive" id="${this.note?.id}"></action-button>`
+          }
+          <action-button type="delete" id="${this.note?.id}"></action-button>
+          
+            </div>
         </div>
         <p name="note-body" class="note-body"
           >${this._note?.body}</p

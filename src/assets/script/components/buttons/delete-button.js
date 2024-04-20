@@ -15,8 +15,8 @@ class DeleteButton extends HTMLElement {
         new CustomEvent("delete-note", {
           detail: this.getAttribute("id"),
           bubbles: true,
-        })
-      )
+        }),
+      ),
     );
   }
 

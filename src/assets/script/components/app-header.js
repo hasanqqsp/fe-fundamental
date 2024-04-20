@@ -16,6 +16,7 @@ class AppHeader extends HTMLElement {
         align-items: center;
         color: white;
         justify-content:center;
+        box-sizing:border-box;
       }
       h1 {
         margin-bottom:0.2rem;

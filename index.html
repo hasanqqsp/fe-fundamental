@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Notes App</title>
-    <link rel="stylesheet" href="assets/style/styles.css" />
+    <!-- <link rel="stylesheet" href="assets/style/styles.css" /> -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -13,15 +13,18 @@
     />
   </head>
   <body>
+    <loading-fs></loading-fs>
     <app-header></app-header>
     <main>
       <div class="inner-container">
         <add-note-button bg="teal" text="white"></add-note-button>
         <add-note-form></add-note-form>
-        <notes-list></notes-list>
+        <notes-list class="main-list"></notes-list>
+        <notes-list title="Arsip Anda" class="archived-list"></notes-list>
       </div>
     </main>
-    <script type="module" src="assets/script/components/index.js"></script>
-    <script type="module" src="assets/script/view/home.js"></script>
+    <!-- <script type="module" src="assets/script/components/index.js"></script>
+    <script type="module" src="assets/script/view/home.js"></script> -->
+    <script defer src="dist/bundle.js"></script>
   </body>
 </html>

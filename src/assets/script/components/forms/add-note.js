@@ -18,9 +18,8 @@ class AddNoteForm extends HTMLElement {
             background-color: white;
             margin-bottom: 1rem!important;
             border-radius: 5px;
-            display: ${this._display};
+            
         }
-
         #add-note-form label {
             display: block;
             
@@ -107,12 +106,26 @@ class AddNoteForm extends HTMLElement {
             justify-content:space-between;
             color: rgba(0, 0, 0, 0.7);
         }
+        :host(.slide-up) {
+          max-height: 0;
+          padding: 0rem!important;
+
+          overflow: hidden;
+          transition: max-height 1s ease, padding 1.5s ease;
+        }
+
+        :host(.slide-down) {
+          max-height: 550px; /* Atur tinggi maksimum yang sesuai */
+          overflow: hidden;
+          transition: max-height 1s ease, padding 1.5s ease;
+        }
         `;
   }
 
   connectedCallback() {
     this.render();
   }
+
   disconnectedCallback() {
     this._shadowRoot
       .getElementById("input-title")
@@ -149,15 +162,27 @@ class AddNoteForm extends HTMLElement {
 
   onFormSubmit({ title, body }) {
     this.dispatchEvent(
-      new CustomEvent("add-note", { detail: { title, body } })
+      new CustomEvent("add-note", { detail: { title, body } }),
     );
+    this.render();
   }
 
   render() {
     this._updateStyle();
+    const element = this._shadowRoot.host;
+    if (this._display == "none") {
+      element.classList.remove("slide-down");
+      element.classList.remove("slide-up");
+      element.classList.add("slide-up");
+      // element.style.display = "none";
+    } else {
+      element.classList.toggle("slide-down");
+      element.classList.toggle("slide-up");
+    }
+
     this._shadowRoot.innerHTML = `
         ${this._style.outerHTML}
-        <section id="add-note-form">
+        <section id="add-note-form" >
             <h2>Tambahkan Catatan</h2>
             <form>
                 <div class="form-group">

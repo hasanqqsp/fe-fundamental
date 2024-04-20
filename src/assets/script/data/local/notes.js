@@ -1,4 +1,4 @@
-let notesData = [
+const notesData = [
   {
     id: "notes-jT-jjsyz61J8XKiI",
     title: "Welcome to Notes, Dimassdhasduhasdasuodasudasudgasduagsdasuidg!",

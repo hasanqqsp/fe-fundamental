@@ -27,6 +27,7 @@ class SaveButton extends HTMLElement {
   connectedCallback() {
     this.render();
   }
+
   render() {
     this.innerHTML = `
         ${this._style.outerHTML}
